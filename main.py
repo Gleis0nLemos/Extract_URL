@@ -1,6 +1,13 @@
 #traçado uma url de exemplo para consulta e extração de dados
-url = "https://bytebank.com/cambio?quantidade=100&&moedaOrigem=real&moedaDestino=dolar"
+# url = "https://bytebank.com/cambio?quantidade=100&&moedaOrigem=real&moedaDestino=dolar"
+url = " "
 
+#sanitização da url
+url = url.strip()
+
+#validação da url
+if url == "":
+    raise ValueError("A URL está vazia")
 #base, parametros
 #find é usado para buscar alguma informação na string                            #procurando um caractere com .find
 indice_interrogacao = url.find("?")                                              #search = "z" in url
@@ -22,3 +29,12 @@ if indice_ecomercial == -1:
 else:
     valor = url_parametros[indice_valor:indice_ecomercial]
 print(valor)
+
+
+def valida_url(self):
+    if self.url == "":
+        raise ValueError("A URL está vazia.")
+    elif not self.url.startswith("https://"):
+        raise ValueError("A URL é invalida.")
+    elif not self.get_url_base().endswith('/cambio'):
+        raise ValueError("A URL é invalida.")
